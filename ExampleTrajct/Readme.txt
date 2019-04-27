@@ -10,3 +10,9 @@ In the data files for HaMMY,
 The first column is time in unit second, the second column is donor counts and the third column is acceptor counts.
 
 The files for vbFRET can be imported into SMART.
+
+Cite:
+A Two-Step Method for smFRET Data Analysis
+Jixin Chen, Joseph R. Pyle, Kurt Waldo Sy Piecco, Anatoly B. Kolomeisky, and Christy F. Landes
+The Journal of Physical Chemistry B 2016 120 (29), 7128-7132
+DOI: 10.1021/acs.jpcb.6b0569
