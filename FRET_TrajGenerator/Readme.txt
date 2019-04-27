@@ -8,6 +8,11 @@ Instructions for installation:
 
 If you are using the MATLAB source, extract to any directory you like. 
 
+Cite:
+A Two-Step Method for smFRET Data Analysis
+Jixin Chen, Joseph R. Pyle, Kurt Waldo Sy Piecco, Anatoly B. Kolomeisky, and Christy F. Landes
+The Journal of Physical Chemistry B 2016 120 (29), 7128-7132
+DOI: 10.1021/acs.jpcb.6b0569
 
 ----------------------------------------------------------------------------------------
 Instructions for use:
