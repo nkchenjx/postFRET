@@ -11,7 +11,13 @@ If you are using the MATLAB source, extract to any directory you like.
 ----------------------------------------------------------------------------------------
 Instructions for use:
 1. postFRET.m
-The code is set to guess 5-state rate constants from a set of input rate constant matrix. The parameters are to represent the simulation in the supporting information of the paper.
+The code is set to guess 5-state rate constants from a set of input rate constant matrix. The parameters are to represent the simulation in the supporting information of the paper:
+
+A Two-Step Method for smFRET Data Analysis
+Jixin Chen, Joseph R. Pyle, Kurt Waldo Sy Piecco, Anatoly B. Kolomeisky, and Christy F. Landes
+The Journal of Physical Chemistry B 2016 120 (29), 7128-7132
+DOI: 10.1021/acs.jpcb.6b0569
+
 
 The code initialize parameters and then uses Monte Carlo simulation to guess the best fit for each rate constant. It loads the below functions
 
