@@ -44,7 +44,7 @@ config.backgroundnoise = 0.7/sqrt(config.delta_t/0.001); % Poisson distribution,
 config.amplifiernoise = 0.37/sqrt(config.delta_t/0.001); % std(signal-mean)/mean, Gaussian, typical value 0.37+-0.03 for 1 ms data.
 %%%%%%check this value again%%%%%%
 % ampsnr = 1/amplifiernoise^2; % signal to noise ratio before bin. give std 1/sqrt(snr).
-config.checkAddnoise = 'false';  % 'true' add noise with snr. 'false' no noise 
+config.checkAddnoise = 'true';  % 'true' add noise with snr. 'false' no noise 
 config.CheckFigure = 'true'; % 'true' testing figures are drawn. 'false' no figures are drawn.
 
 save 'config';
