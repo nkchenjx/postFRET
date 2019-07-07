@@ -43,5 +43,5 @@ Step 4: S4_ConfigAndFRETAnalysis.m
 
 Step 5: S5_postFRET.m
 
-            Simulate trajectories and find the best match.
+            Simulate trajectories and find the best match using the JCFit algorithm.
 
