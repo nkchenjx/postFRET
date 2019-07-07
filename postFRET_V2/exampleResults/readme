@@ -1,0 +1,5 @@
+A results obtained from stopped at the 2nd iteration manually. It takes a few minutes for each iteration for a typical desktop computer.
+The score history is in wl1ScoreHistory 
+The rate histtory is in the rateHistory
+With more than one rates in the lower scores, e.g. iteration 3-10, take the average for the best guess.
+    mean(rateHistory(:,:, 3:10), 3)
