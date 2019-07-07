@@ -11,8 +11,7 @@ Version 2.0 is in the folder postFRET_V2
 ----------------------
 CITATION: 
 
-Jixin Chen,* Joseph R Pyle, Kurt Waldo Sy Piecco, Anatoly B Kolomeisky, Christy F Landes, A Two-Step Method for smFRET Data Analysis. J. Phys. Chem. B 2016, 120(29), 7128 - 7132 (link) (pdf) (SI) (Matlab codes Ver 1.0) (Work is selected in the Virtual Issue of JPC B on Biophysics.)
-
+Jixin Chen,* Joseph R Pyle, Kurt Waldo Sy Piecco, Anatoly B Kolomeisky, Christy F Landes, A Two-Step Method for smFRET Data Analysis. J. Phys. Chem. B 2016, 120(29), 7128 - 7132
  
 
 METHOD:
