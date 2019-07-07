@@ -8,4 +8,4 @@ Version 1.0 is in the folder postFRET
         
         
 Version 2.0 is in the folder postFRET_V2
-        modified 2019
+        modified July 2019
