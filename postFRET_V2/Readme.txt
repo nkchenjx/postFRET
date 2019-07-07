@@ -9,12 +9,12 @@ chenj@ohio.edu
 -----------------------------------------------------------------------------------------
 Instructions for installation:
 
-Extract to any directory you like and change the path in S1_loadData.m. 
+Extract to any directory you like and change the pathes in S1_loadData.m if needed. 
 
 
-CITATION: 
+CITATION:
 
-Jixin Chen,* Joseph R Pyle, Kurt Waldo Sy Piecco, Anatoly B Kolomeisky, Christy F Landes, A Two-Step Method for smFRET Data Analysis. J. Phys. Chem. B 2016, 120(29), 7128 - 7132 (link) (pdf) (SI) (Matlab codes Ver 1.0) (Work is selected in the Virtual Issue of JPC B on Biophysics.)
+Jixin Chen,* Joseph R Pyle, Kurt Waldo Sy Piecco, Anatoly B Kolomeisky, Christy F Landes, A Two-Step Method for smFRET Data Analysis. J. Phys. Chem. B 2016, 120(29), 7128 - 7132 
 
 
 METHOD:
@@ -23,7 +23,7 @@ The idea is to fit the experimental single-molecule FRET (smFRET, Wikipedia link
 
 The guesssing algorithm of the simulated data used in the codes is semi-exhausive searching algorithm called JCFit (GitHub link), a fitting algorithm that searches a parameter in an equation (model) within a defined boundary. The searching spacing is exponentially distributed away from the inital guess to the boundary. E.g. -10 to 10 are the boundaries and 1.0 is the initial guess, and 0.1 is the searching acuracy and ln(2) is the exponential factor, then the searching space is [1.0, 1.1, 1.3, 1.7, 2.5, 4.1, 7.3, 10] going up, and [1.0, 0.9, 0.7, 0.3, -0.5, -2.1, -5.3, -10] going down. The boundaries in version 2.0 is set mobile among searching iterations.
 
-
+ 
 
 MATLAB CODES (Ver 2.0):
 
@@ -46,34 +46,6 @@ Step 4: S4_ConfigAndFRETAnalysis.m
 Step 5: S5_postFRET.m
 
             Simulate trajectories and find the best match.
-
- 
-
-
-
-------------------------------------------------------------------------------------------
-Functions:
-2. findRateError.m
-   Run a Monte Carlo simulation and find the average absolute error of the results from the target.
-
-3. awgn.m
-   Generate a Gaussian noise.
-
-4. CountTransitions_difflength.m
-   Rate constant analysis to generate a matrix of rate constants from the FRET trajectory. One-data-point reassignment is an option but set to 'false' by default.
-
-5. exprnd.m
-   Generate exponentially distributed random number.
-
-6. findRateMin.m
-   Compare the screened rate and find the one to give a minimum error score.
-
-7. findRateMin2.m and findRateMin3.m
-   Fit the error score vs rate to determine the rate that gives minimum error score.
-
-8. poissrnd.m
-   Generate a Poisson noise.
-
 
 
 --------------------------
