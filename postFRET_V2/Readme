@@ -1,0 +1,9 @@
+codes in the folder: postFRET (changed to read raw data format from the kinSoftChallenge 2019, and change the noise model to match the data)
+   in the folder there is another readme.txt file explaining the functions and running sequnce.
+   Coded for the simplest 2 state data now. For 3 or more states simply change the number of states and the rate constant matrix accordingly.
+
+data in folder: postFRET\exampleData
+   downloaded from 
+         https://sites.google.com/view/kinsoftchallenge/home
+
+An example results in folder: postFRET\exampleResults 
