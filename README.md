@@ -1,5 +1,5 @@
 # postFRET
-Version1.0:  A method to fit single-molecule FRET data with two steps to increase the accuracy
+A method to fit single-molecule FRET data with two steps to increase the accuracy
 
 
 Version 1.0 is in the folder postFRET 
