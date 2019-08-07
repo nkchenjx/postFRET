@@ -57,9 +57,10 @@ Step 4: S4_ConfigAndFRETAnalysis.m
 Step 5: S5_postFRET.m
 
             Simulate trajectories and find the best match.
+            
+Step 6: summerize and re-plot the results.
 
- 
-
+Step 7: calculate the upper and lower error bars.
 
 
 ------------------------------------------------------------------------------------------
