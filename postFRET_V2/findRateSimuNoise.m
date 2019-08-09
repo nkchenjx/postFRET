@@ -45,7 +45,8 @@ end
 cycle = ceil(totaltime./delta_t); % Mount Carlo cycle number; Step length of each molecule
 
 
-%% main Mount Carlo function
+%% main Mount Carlo function-----------------------------------------
+rng('shuffle');
 
 molecules = struct('traject', []);
 for m = 1: numMol % initialize each trajectory
