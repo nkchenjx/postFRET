@@ -46,7 +46,7 @@ cycle = ceil(totaltime./delta_t); % Mount Carlo cycle number; Step length of eac
 
 
 %% main Mount Carlo function
-
+rng('shuffle');
 molecules = struct('traject', []);
 for m = 1: numMol % initialize each trajectory
 %------- initial FRET state randomized with ratio based on the equilium concerntation of the states 
