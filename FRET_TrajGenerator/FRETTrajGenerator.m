@@ -53,4 +53,5 @@ ResultingRate = MCsimulation(config, config.rate);
 
 FileName=sprintf('Results_%s.mat',datestr(now,'yyyymmdd_HHMMSS'));
 save(FileName);
+% The bin-free and noise-free trajectories have been saved in separated files if the config.CheckFigure is set to 'true'.
 %% END (by Jixin.Chen)
