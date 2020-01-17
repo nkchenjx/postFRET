@@ -19,6 +19,7 @@ end
 figure; plot(data(:,2)); hold on;
 plot(data(:,3)); plot(data(:,4)); title('normalized A D total');
 
+sumIaa = mean(data(:,4)); % nomalized A+D total;
 
 %% fit the gaussian peaks
 
@@ -103,8 +104,8 @@ numP = size(pA,1);
     paraGuess = pg(:)';
     
     % boundarys
-    bounds = [paraGuess/10;   % lower boundary
-              paraGuess*10]; % upper boundary
+    bounds = [paraGuess/2;   % lower boundary
+              paraGuess*2]; % upper boundary
     %-------------------------------
 
     d1 = paraGuess-bounds(1,:);
@@ -151,31 +152,50 @@ numP = size(pA,1);
 [noisePA, SA] = polyfit(Accpt(:,1), Accpt(:,3), 1);
 noiseMdl = @(para, x) para(1)*x + para(2); % linear model,
 
-% test run the noise model and compair to the data.
-L = length(data(:,1));
-f = Donor(:,2).*Donor(:,3);
-li = round(L*f./sum(f));
-trajD = [];
-for i = 1:numstate;
-    trajD = [trajD; ones(li(i), 1)*Donor(i,1)];
-end
+Ac = FRETStates*sumIaa;
+Dc = (1-FRETStates)*sumIaa;
 
+% test run the noise model and compair to the data.
+
+L = length(data(:,1));
 f = Accpt(:,2).*Accpt(:,3);
 li = round(L*f./sum(f));
+
+% f = Donor(:,2).*Donor(:,3);
+% li = round(L*f./sum(f));
+
+trajD = [];
+for i = 1:numstate
+    % trajD = [trajD; ones(li(i), 1)*Donor(i,1)];
+    trajD = [trajD; ones(li(i), 1)*Dc(i)];
+end
+
+% f = Accpt(:,2).*Accpt(:,3);
+% li = round(L*f./sum(f));
 trajA = [];
-for i = 1:numstate;
-    trajA = [trajA; ones(li(i), 1)*Accpt(i,1)];
+%for i = numstate:-1:1;
+    % trajA = [trajA; ones(li(i), 1)*Accpt(i,1)];
+ for i = 1:numstate
+    trajA = [trajA; ones(li(i), 1)*Ac(i)];
 end
 
 simutimestep = datatimestep;
 trajD = noiseAdding(trajD, noiseMdl, noisePD, datatimestep, simutimestep);
 trajA = noiseAdding(trajA, noiseMdl, noisePA, datatimestep, simutimestep);
+trajFRET = trajA./(trajA+trajD);
 
 figure; subplot(2, 2, 1), hist(data(:,2),500); title('donor exp'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]); hold on;
 subplot(2, 2, 2), hist(data(:,3),500); title('acceptor exp'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
 subplot(2, 2, 3), hist(trajD, 500); title('donor simulated noise'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]);
 subplot(2, 2, 4), hist(trajA, 500); title('acceptor simulated noise'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
 
+figure; subplot(2, 1, 1), hist(data(:,5), 100); title('Exprimental FRET'); axis([-0.1 1.1 0 inf]); hold on;
+subplot(2, 1, 2), hist(trajFRET, 100); title('Estimated simulated FRET'); axis([-0.1 1.1 0 inf]);
+
+
+display(num2str(Ac + flip(Dc)));
+display('if the sum of donor and accepter channel are not the same, and the distributions are different, manually determine the FRET state below');
+% FRETStates = [0.23, 0.72, 0.90];
 
 %% summerise results
 config.numState = numstate;
@@ -183,5 +203,5 @@ config.FRETStates = FRETStates;
 config.noiseMdl = noiseMdl;
 config.noisePD = noisePD;
 config.noisePA = noisePA;
-config.sumIaa = mean(data(:,4));
+config.sumIaa = sumIaa;
 
