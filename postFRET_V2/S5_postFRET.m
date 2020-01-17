@@ -205,7 +205,6 @@ else
             for j = 1:config.numoftry
                 rate(mf,mi) = config.rateMulti(j)*bestGuess(mf,mi);
                 parfor k = 1:config.repeatTime
-                  fprintf('.');
                   rateSimu(:,:,k) = findRateSimuNoise(config, rate);
                   wl1Score(k) = findWL1(rateSimu(:,:,k), config.rateTarget);
                 end
@@ -214,6 +213,7 @@ else
                 rateScan{j} = rate;
                 rateScanSimu{j} = rateSimumean;
                 rateScore(j) = wl1Scoremean;
+                fprintf('.');
             end
             [minScore,ind] = min(rateScore);
                 fprintf(['\n score = ', num2str(minScore), '\n']);
