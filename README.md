@@ -8,6 +8,9 @@ Version 1.0 is in the folder postFRET
 Version 2.0 is in the folder postFRET_V2
         modified July 2019
         
+Version 3.0 is in the folder postFRET_V3
+        modified January 2020
+        
 ----------------------
 CITATION: 
 
