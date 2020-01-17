@@ -1,0 +1,3 @@
+postFRET V3 adapts an intensity-dependent Gaussian noise model for donor and accepter signal.
+i.e., assume the sigma of the noise is linearly propotional to the average photocounts the signal.
+This can be further developed to a noise model that carries both fixed Gaussian noise and intensity-dependent Gaussian noise in the future.
