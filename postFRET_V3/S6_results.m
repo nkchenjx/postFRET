@@ -39,10 +39,10 @@ fprintf(['\n each iteration computational time = ', num2str(mean(config.computTi
 
 
 fprintf('\n average rates = (cols: start states; rows: end states) ');
-mr = mean(rateHistory,3)
+mr = mean(rateHistory(:, :, 4:end),3)
 
 fprintf('\n standard deviation of the rates = ');
-rs = std(rateHistory, 0, 3)*sqrt(config.repeatTime)
+rs = std(rateHistory(:, :, 4:end), 0, 3)*sqrt(config.repeatTime)
 
 
 [rateSimu, DataBin, DataBinLength] = MCsimulation(config, mr); % simulate a new trejectory using the final results.
