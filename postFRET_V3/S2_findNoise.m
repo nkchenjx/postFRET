@@ -195,6 +195,8 @@ subplot(2, 1, 2), hist(trajFRET, 100); title('Estimated simulated FRET'); axis([
 
 display(num2str(Ac + flip(Dc)));
 display('if the sum of donor and accepter channel are not the same, and the distributions are different, manually determine the FRET state below');
+
+% numstate = 3;
 % FRETStates = [0.23, 0.72, 0.90];
 
 %% summerise results
