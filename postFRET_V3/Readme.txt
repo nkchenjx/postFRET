@@ -30,14 +30,17 @@ MATLAB CODES (Ver 2.0):
 Step 1: S1_loadData.m
 
            Load raw data. Data is adapted from kinSoftChallenge 2019 with the following format: (1) each trace has been corrected from photoblinking, photobleaching, and backgrounds; (2) each trace has five columns, 1 time, 2 donor photocounts, 3 acceptor photocounts,  4 sum of donor and acceptor photocounts, 5 FRET values.
+           
+Step 2: S2_findNoise.m
 
-Step 2: S2_loadKey.m
+            Version 1.0 use a noise model, signal-dependent Gaussian noise pluss signal-independent Poisson noise. 
+            Version 2.0 use a signal-independent Gaussian noise model used in the kinSoftChallenge 2019. One has to custumize the noise model in findRateSimuNoise.m.
+            Version 3.0 use a signal-dependent Gaussian noise model use Guassian fitting to determine the noise amplitude. One can overide the noise model manually.
 
+Step 3: S3_loadKey.m
+        
            If the answer of the system is known, type in the answer, that is the transition rates between states. If not, give it a random guess based on the number of states one would like to fit (manually determined in postFRET).
 
-Step 3: S3_findNoise.m
-
-            Version 1.0 use a noise model, signal-dependent Gaussian noise pluss signal-independent Poisson noise. Version 2.0 use a signal-independent Gaussian noise model used in the kinSoftChallenge 2019. One has to custumize the noise model in findRateSimuNoise.m.
 
 Step 4: S4_ConfigAndFRETAnalysis.m
 
@@ -53,8 +56,8 @@ Step 5: S5_postFRET.m
 
 ------------------------------------------------------------------------------------------
 Functions:
-2. findRateError.m
-   Run a Monte Carlo simulation and find the average absolute error of the results from the target.
+2. MCSimulation.m
+   Run a Monte Carlo simulation for a simulated trajectory.
 
 3. awgn.m
    Generate a Gaussian noise.
