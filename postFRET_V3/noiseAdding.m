@@ -12,9 +12,10 @@
 
 function trajOut = noiseAdding(trajIn, noiseMdl, noiseP, datatimestep, simutimestep)
 
+binsize = datatimestep/simutimestep;
 
-noiseSigma = noiseMdl(noiseP, trajIn);
-noiseSigma = noiseSigma/sqrt(datatimestep/simutimestep); 
+noiseSigma = noiseMdl(noiseP, trajIn*binsize);
+noiseSigma = noiseSigma/sqrt(binsize); 
 % for a faster time resolution, the signal drops 1/x but the noise/signal ratio goes up sqrt(x). 
 % thus, the amplitude of noise drop sqrt(x).
 
