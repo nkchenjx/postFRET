@@ -104,8 +104,8 @@ numP = size(pA,1);
     paraGuess = pg(:)';
     
     % boundarys
-    bounds = [paraGuess/2;   % lower boundary
-              paraGuess*2]; % upper boundary
+    bounds = [paraGuess/10;   % lower boundary
+              paraGuess*10]; % upper boundary
     %-------------------------------
 
     d1 = paraGuess-bounds(1,:);
@@ -150,6 +150,13 @@ numP = size(pA,1);
 % when necessary.
 [noisePD, SD] = polyfit(Donor(:,1), Donor(:,3), 1);
 [noisePA, SA] = polyfit(Accpt(:,1), Accpt(:,3), 1);
+
+%----------- manually boost the noise and manually determine the states-
+% noisePD(1) = 2*noisePD(1);
+% noisePA(1) = 1.5*noisePA(1);
+   
+%-----------
+
 noiseMdl = @(para, x) para(1)*x + para(2); % linear model,
 
 Ac = FRETStates*sumIaa;
@@ -189,15 +196,18 @@ subplot(2, 2, 2), hist(data(:,3),500); title('acceptor exp'); axis([min(Accpt(:,
 subplot(2, 2, 3), hist(trajD, 500); title('donor simulated noise'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]);
 subplot(2, 2, 4), hist(trajA, 500); title('acceptor simulated noise'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
 
-figure; subplot(2, 1, 1), hist(data(:,5), 100); title('Exprimental FRET'); axis([-0.1 1.1 0 inf]); hold on;
-subplot(2, 1, 2), hist(trajFRET, 100); title('Estimated simulated FRET'); axis([-0.1 1.1 0 inf]);
 
+figure; hr = round((max(data(:,5))-min(data(:,5)))/0.01); subplot(2, 1, 1), hist(data(:,5), hr); title('Exprimental FRET'); axis([-0.1 1.1 0 inf]); hold on;
+hr = round((max(trajFRET)-min(trajFRET))/0.01); subplot(2, 1, 2), hist(trajFRET, hr); title('Estimated simulated FRET'); axis([-0.1 1.1 0 inf]);
 
+%---------manually determines the states! overwrite the above -----
 display(num2str(Ac + flip(Dc)));
 display('if the sum of donor and accepter channel are not the same, and the distributions are different, manually determine the FRET state below');
-
-% numstate = 3;
-% FRETStates = [0.23, 0.72, 0.90];
+ %-----------force states:
+ numstate = 2;
+ FRETStates = [0.2, 0.8]; 
+% % the above states were determined using STaSI
+%-----------
 
 %% summerise results
 config.numState = numstate;

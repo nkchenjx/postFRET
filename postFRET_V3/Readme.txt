@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
-Version 3.0 
+Version 2.0 
 Coded with MATLAB 2014b
-Jan, 2020
+July, 2019
 by
 Jixin Chen @ Ohio University, Department of Chemistry and Biochemistry, Athens, Ohio 45701
 chenj@ohio.edu
@@ -77,4 +77,4 @@ Functions:
 
 
 --------------------------
-2020 by Dr. Jixin Chen @ Ohio University, Chemistry&Biochemistry.  chenj@ohio.edu
+2019 by Dr. Jixin Chen @ Ohio University, Chemistry&Biochemistry.  chenj@ohio.edu

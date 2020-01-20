@@ -2,8 +2,8 @@ clear all;
 close all;
 
 config.codepath = 'D:\107_KinSoftChallenge\PostFRET_ExpData\postFRETcodes\';
-config.datapath = 'D:\107_KinSoftChallenge\PostFRET_ExpData\expSet3\';
-config.resultpath = 'D:\107_KinSoftChallenge\PostFRET_ExpData\expSet3_Results\';
+config.datapath = 'D:\107_KinSoftChallenge\PostFRET_ExpData\expSet1\';
+config.resultpath = 'D:\107_KinSoftChallenge\PostFRET_ExpData\expSet1_Results\';
 
 
 
@@ -20,7 +20,7 @@ elseif ischar(config.filelist) % if multiselection is off, e.filelist is char st
      nloops = 1;
 else
      warndlg('e.filelist has not been read properly!')
-     return
+     returnc
 end
 % e.filelist = filelist
 fname = config.filelist;

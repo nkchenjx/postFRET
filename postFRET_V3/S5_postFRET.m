@@ -10,11 +10,10 @@ config.WAMSearching = 'false'; % sequential searching the rate constant or searc
 config.BleachLifetime = mean(config.bleachtime);
 config.BleachtimeThres = min(config.bleachtime); % (s), if the lifetime is less than this value, remove it.
 
-config.delta_t = config.datatimestep/10; % time step (s). Simulate data with delta_t at 10x finer than bin time to represent the real.
+config.delta_t = config.datatimestep; % time step (s). Simulate data with delta_t at 10x finer than bin time to represent the real.
 config.bintime = config.datatimestep; % (s)
 config.binsize = round(config.bintime/config.delta_t); % data points per bin
 config.numMol = length(datalength); % default number of total molecules set to 100
-config.totalsignal = config.sumIaa*config.delta_t/config.bintime; % Total photon per simulated time step
    display(['simulation length of each run ~',num2str(config.numMol*config.BleachLifetime), ' s long data points...']);
 
    
@@ -48,8 +47,8 @@ config.energyBarrier = 4;
 config.CheckFigure = 'false'; % 'true' testing figures are drawn. 'false' no figures are drawn.
 config.CheckSaveTraj = 'false'; % if 'true', the experimental trajectory will be saved into a matlab file.
 
-
-config.maxIteration = 100; %set the maximum iterations in a searching.
+%------------------------ maximum iteration number:
+config.maxIteration = 60; %set the maximum iterations in a searching.
 config.repeatTime = 3; % for each run repeat times to get the average
 config.WL1thresh = 0.001; % the convergence wL1 score (WL1thresh*100)% for a "whack-a-mole" search to stop.  
                          % This value adjusts final accuracy. 
@@ -77,7 +76,7 @@ if strcmp(config.WAMSearching, 'true')
     rateScore =[];  
     rateSimu = zeros(numState, numState, config.repeatTime);
     for k = 1:config.repeatTime
-          rateSimu(:,:,k) = findRateSimuNoise(config, bestGuess);
+          rateSimu(:,:,k) = MCsimulation(config, bestGuess);
           wl1Score(k) = findWL1(rateSimu(:,:,k),config.rateTarget);
     end
     wl1Scoremean = mean(wl1Score);
@@ -127,7 +126,7 @@ if strcmp(config.WAMSearching, 'true')
             rate(mf,mi) = config.rateMulti(j).*bestGuess(mf,mi);
             parfor k = 1:config.repeatTime
               fprintf('.');
-              rateSimu(:,:,k) = findRateSimuNoise(config, rate);
+              rateSimu(:,:,k) = MCsimulation(config, rate);
               wl1Score(k) = findWL1(rateSimu(:,:,k), config.rateTarget);
             end
             wl1Scoremean = mean(wl1Score);
@@ -233,7 +232,6 @@ else
     end
 
     
-    bestGuess = config.rateTarget;
   % save 'config'
  
     % minScore = findRateError(config, initialGuess);
@@ -244,7 +242,7 @@ else
     wl1ScoreHistory = [];
     scanHistory = [];
     
-    rateSimu = findRateSimuNoise(config, bestGuess);
+    rateSimu = MCsimulation(config, bestGuess);
     minScore = findWL1(rateSimu, config.rateTarget);
     
     %-----------------------------------------------------------
@@ -263,7 +261,7 @@ else
             for j = 1:config.numoftry
                 rate(mf,mi) = config.rateMulti(j)*bestGuess(mf,mi);
                 parfor k = 1:config.repeatTime
-                  rateSimu(:,:,k) = findRateSimuNoise(config, rate);
+                  rateSimu(:,:,k) = MCsimulation(config, rate);
                   wl1Score(k) = findWL1(rateSimu(:,:,k), config.rateTarget);
                 end
                 wl1Scoremean = mean(wl1Score);
@@ -340,11 +338,6 @@ fprintf(['\n each iteration computational time = ', num2str(mean(config.computTi
 
 [rateSimu, DataBin, DataBinLength] = MCsimulation(config, bestGuess); % simulate and save one trajectory using the last bestGuess
 
-%% save results
-cd(config.resultpath);
-FileName = sprintf('Results_%s.mat',datestr(now,'yyyymmdd_HHMMSS'));
-save(FileName); 
-
 
 %% display final results
 figure; plot(data(:,1), data(:,5)); hold on; plot(DataBin(:,1), DataBin(:,4)+ 1); title('lower: norm. raw data; upper: simulated data');
@@ -359,5 +352,11 @@ mr = mean(rateHistory,3)
 
 fprintf('\n standard deviation of the rates = ');
 rs = std(rateHistory, 0, 3)*sqrt(config.repeatTime)
+
+
+%% save results
+cd(config.resultpath);
+FileName = sprintf('Results_2tates_%s.mat',datestr(now,'yyyymmdd_HHMMSS'));
+save(FileName); 
 
 %}
