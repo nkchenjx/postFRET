@@ -48,7 +48,8 @@ config.CheckFigure = 'false'; % 'true' testing figures are drawn. 'false' no fig
 config.CheckSaveTraj = 'false'; % if 'true', the experimental trajectory will be saved into a matlab file.
 
 %------------------------ maximum iteration number:
-config.maxIteration = 200; %set the maximum iterations in a searching.
+config.maxIteration = 10; %set the maximum iterations in a searching.
+display(['maxIteration set to ', num2str(config.maxIteration), '. Reset to a value between 20-100 for better results in the later iterations.']);
 config.repeatTime = 3; % for each run repeat times to get the average
 config.WL1thresh = 0.001; % the convergence wL1 score (WL1thresh*100)% for a "whack-a-mole" search to stop.  
                          % This value adjusts final accuracy. 
