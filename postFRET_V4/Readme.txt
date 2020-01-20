@@ -55,7 +55,7 @@ Step 5: S5_postFRET.m
  
 
 %---------
-Verson 4.0 update the WL1 scoring model to WL1 numalized to the total lifetime of a state.
+Verson 4.0 update the WL1 scoring model to WL1 numalized to the total rate of a state. The previous WL1 model is in panic mode for small changes over a small rate constant. The new model ease down and focus more on the big picture of the rate matrix. Future direction is to normalize the deviations of lifetime to the average lifetime of a state.
 
 ------------------------------------------------------------------------------------------
 Functions:
