@@ -37,8 +37,8 @@ transProb = zeros(numState);  % if a state is going to trnasfer to another, the 
 sumRate = zeros(1, numState); stayP = sumRate; transP = sumRate;
 for x = 1:numState % initialize transProb
     sumRate(x) = sum(rate(1:numState,x));
-    stayP(x) = exp(-sumRate(x)*delta_t); % this probability to stay
-    transP(x) =  1-stayP(x);  % this probability to transfer
+    transP(x) = exp(-sumRate(x)*delta_t); % this probability to transfer
+    stayP(x) =  1-transP(x);  % this probability to stay
     for y = 1:numState
         if x == y
             transProb(y, x) = stayP(x);
