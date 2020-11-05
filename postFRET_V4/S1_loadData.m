@@ -28,7 +28,7 @@ fname = config.filelist;
 config.FRETUL = 1.1; % FRET upper limit
 config.FRETLL = -0.1; % FRET lower limit
 
-config.rawtimeunit = 1E-3; % the raw data time unit. 1E-3 for ms. 1E-6 for us.
+config.rawtimeunit = 1E-3; % the raw data time unit. 1E-3 for ms. 1E-6 for micro second.
 
 %% load files
 tic;
