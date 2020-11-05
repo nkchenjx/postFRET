@@ -26,7 +26,15 @@ sumIaa = mean(data(:,4)); % nomalized A+D total;
 [ds, dx] = hist(data(:,2), 500);
 [as, ax] = hist(data(:,3), 500);
 
-figure; plot(dx, ds); hold on; plot(ax, as);
+figure; plot(dx, ds); hold on; plot(ax, as); title('change the bin size to get a smoother distribution for fitting');
+prompt = {'Current number bins = 500, masually change the number of bins:'};
+dlgtilte = 'num of bins';
+dims = [1 35];
+definput = {'500'};
+answer = inputdlg(prompt,dlgtilte,dims,definput);
+numbin = str2double(answer{1});
+[ds, dx] = hist(data(:,2), numbin);
+[as, ax] = hist(data(:,3), numbin);
 
 %----------------- donor channel
 figure;plot(dx, ds); title('donor channel: click the Gaussian peaks from left to right, and hit keybord enter to end');
