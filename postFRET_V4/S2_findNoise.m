@@ -37,7 +37,7 @@ numP = size(pD,1);
 %    X = repmat(x, numP);
 %    Y = repmat(y, numP);
     % set fitting options
-    option.maxiteration = 10;  % number of iteration fixed, the fitting will stop either this iteration or convergence reached first 
+    option.maxiteration = 100;  % number of iteration fixed, the fitting will stop either this iteration or convergence reached first 
     option.accuracy = 0.0001;  % best searching accuracy, fraction of guessed value
     option.convgtest = 1e-10; % difference between two iterations on the square difference between fitting and data.
 
