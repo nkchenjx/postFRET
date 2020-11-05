@@ -199,10 +199,10 @@ trajD = noiseAdding(trajD, noiseMdl, noisePD, datatimestep, simutimestep);
 trajA = noiseAdding(trajA, noiseMdl, noisePA, datatimestep, simutimestep);
 trajFRET = trajA./(trajA+trajD);
 
-figure; subplot(2, 2, 1), hist(data(:,2),500); title('donor exp'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]); hold on;
-subplot(2, 2, 2), hist(data(:,3),500); title('acceptor exp'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
-subplot(2, 2, 3), hist(trajD, 500); title('donor simulated noise'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]);
-subplot(2, 2, 4), hist(trajA, 500); title('acceptor simulated noise'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
+figure; subplot(2, 2, 1), hist(data(:,2),numbin); title('donor exp'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]); hold on;
+subplot(2, 2, 2), hist(data(:,3),numbin); title('acceptor exp'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
+subplot(2, 2, 3), hist(trajD, numbin); title('donor simulated noise'); axis([min(Donor(:,1)-3*Donor(:,3)) max(Donor(:,1)+3*Donor(:,3)) 0 inf]);
+subplot(2, 2, 4), hist(trajA, numbin); title('acceptor simulated noise'); axis([min(Accpt(:,1)-3*Accpt(:,3)) max(Accpt(:,1)+3*Accpt(:,3)) 0 inf]);
 
 
 figure; hr = round((max(data(:,5))-min(data(:,5)))/0.01); subplot(2, 1, 1), hist(data(:,5), hr); title('Exprimental FRET'); axis([-0.1 1.1 0 inf]); hold on;
