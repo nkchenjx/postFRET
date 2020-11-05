@@ -10,7 +10,7 @@ config.resultpath = 'D:\107_KinSoftChallenge\V3test2Results\';
 %% Window to select file%%%%
 
 cd(config.datapath);
-[config.filelist, path] = uigetfile('*.dat','Choose FRET Files: trace','MultiSelect','on');
+[config.filelist, path] = uigetfile('*.*','Choose FRET Files: trace','MultiSelect','on');
 PrevFolder=cd;
 cd(path);
 if iscell(config.filelist) % if multiselection is on, e.filelist is a cell
