@@ -77,8 +77,8 @@ config.bleachtime = bleachtime*config.datatimestep;
 toc
 
 % data format:
-% clm  1     2             3            4         5
-%  %t (s)	Idd (a.u.)	Ida (a.u.)	Iaa (a.u.)	FRET E  
+% clm  1                2                    3                        4                          5
+%  t (s)	  Donor counts (a.u.)	Acceptor counts (a.u.)	D+A sum counts (a.u.)	FRET E (A/(A+D)) 
 
 % datalength:
 % accumulative length of each molecule. molecule 1 start with row 1 and
