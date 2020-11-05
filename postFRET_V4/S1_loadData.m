@@ -28,6 +28,7 @@ fname = config.filelist;
 config.FRETUL = 1.1; % FRET upper limit
 config.FRETLL = -0.1; % FRET lower limit
 
+config.rawtimeunit = 1E-3; % the raw data time unit. 1E-3 for ms. 1E-6 for us.
 
 %% load files
 tic;
@@ -37,17 +38,18 @@ bleachtime = [];
 datalength = [];
 if nloops > 1
     d = load(filenames{1});
-    data = [d];
+ 
     datalength(1) = size(d,1);
     bleachtime = [bleachtime; size(d,1)];
-    config.datatimestep = data(2,1)- data(1,1);
+    config.datatimestep = (d(2,1)- d(1,1))*config.rawtimeunit; %raw data time unit in ms change to s
     d(:,1) = (1:bleachtime)'*config.datatimestep;
     close all;
     fclose 'all'; 
+    data = [d];
         
-    for filenum = 2:size(filenames,2)
+    for filenum = 2 : nloops
         d = load(filenames{filenum});
-        datatimestep = d(2,1)-d(1,1);
+        datatimestep = (d(2,1)- d(1,1))*config.rawtimeunit;
         
         if datatimestep - config.datatimestep > 1e-10
             display('time step is different for this data set, modify the code to change the time');
